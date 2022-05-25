@@ -1,8 +1,9 @@
 <?php
-	$mongo = new Mongo();
-	$db = $mongo->selectDB("farmaciadb");
-	$medicines = $mongo->selectCollection($db,"medicinas");
-
+	require 'vendor/autoload.php';
+	$connection = new MongoDB\Client;
+	$mongo = new MongoDB\Client('mongodb://localhost:27017');
+	$db = $mongo->farmaciadb;
+	$medicines = $db->medicinas;
 
 	$id = $_POST['id'];
 	$Name = $_POST["nameMedicine"];
@@ -10,9 +11,9 @@
 	$Description = $_POST["descriptionMedicine"];
 
 
-	$condition = array("_id" => new MongoId($id));
+	$condition = array("Id" => $Id);
 	$medicineModified = array("Name"=>$Name,"Id"=>$Id,"Description"=>$Description);
-	$medicines->update($condition, $medicineModified);
+	$medicines->updateOne($condition,['$set' => $medicineModified]);
 
 	header("Refresh: 0;url=index.php?mensaje=3")
 ?>   

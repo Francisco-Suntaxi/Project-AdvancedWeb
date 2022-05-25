@@ -17,7 +17,7 @@
                 <?php 
                     require_once("connectMedicine.php");
                     $id =  $_GET['id'];
-                    $condition = array("_id" => new  MongoId($id));
+                    $condition = array("Id" => $id);
                     if($medicines->count($condition) == 1){
                         $medicinesAux = $medicines->findOne($condition);
                     }
@@ -25,19 +25,15 @@
                 <div class="control-group">
                 <label class="control-label" for="inputName">Name</label>
                 <div class="controls">
-                    <input type="text" name="nameMedicine" id="inputName" class="input-xlarge" placeholder="Name of Medicine"/>
+                    <input type="text" name="nameMedicine" id="inputName" class="input-xlarge" value=<?php echo $medicinesAux["Name"] ?>>
                 </div>
             </div>
-             <div class="control-group">
-                <label class="control-label" for="inputId">Id</label>
-                <div class="controls">
-                    <input type="text" name="idMedicine" id="inputId" class="input-xlarge" placeholder="Id of Medicine"/>
-                </div>
-            </div>
+            <input type="hidden"  name="idMedicine" id="inputId" class="input-xlarge" value=<?php echo $medicinesAux["Id"] ?>>
+           
              <div class="control-group">
                 <label class="control-label" for="inputDescription">Description</label>
                 <div class="controls">
-                    <input type="text" name="descriptionMedicine" id="inputDescription" class="input-xlarge" placeholder="Description of Medicine"/>
+                    <input type="text" name="descriptionMedicine" id="inputDescription" class="input-xlarge" value=<?php echo $medicinesAux["Description"] ?>>
                 </div>
             </div>
             

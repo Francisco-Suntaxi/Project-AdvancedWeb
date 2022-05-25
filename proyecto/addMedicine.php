@@ -1,7 +1,11 @@
 <?php
-	$mongo = new Mongo();
-	$db = $mongo->selectDB("farmaciadb");
-	$medicines = $mongo->selectCollection($db,"medicinas");
+	require 'vendor/autoload.php';
+	$connection = new MongoDB\Client;
+
+
+	$mongo = new MongoDB\Client('mongodb://localhost:27017');
+	$db = $mongo->farmaciadb;
+	$medicines = $db->medicinas;
 
 
 	$Name = $_POST["nameMedicine"];
@@ -9,7 +13,7 @@
 	$Description = $_POST["descriptionMedicine"];
 	
 	$newMedicine = array("Name"=>$Name,"Id"=>$Id,"Description"=>$Description);
-	$medicines->insert($newMedicine);
+	$medicines->insertOne($newMedicine);
 
 	header("Refresh: 0;url=index.php?mensaje=2")
 ?>

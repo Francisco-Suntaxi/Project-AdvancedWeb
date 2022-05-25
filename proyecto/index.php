@@ -76,14 +76,14 @@
                             foreach ($documentos as $documento) {                        
                     ?>
                     <tr>
-                        <td><?php echo $documento["idMedicine"]; ?></td>
-                        <td><?php echo $documento["nameMedicine"]; ?></td>
-                        <td><?php echo $documento["descriptionMedicine"]; ?></td>
+                        <td><?php echo $documento["Id"]; ?></td>
+                        <td><?php echo $documento["Name"]; ?></td>
+                        <td><?php echo $documento["Description"]; ?></td>
                         <td><?php echo $documento["quantityMedicine"]; ?></td>
                         <td><?php echo $documento["priceMedicine"]; ?></td>
                         
-                        <td><a href="modifyMedicine.php?id=<?php echo $documento['_id'] ?>" class="btn btn-warning"><i class="icon-pencil icon-white"></i> Modify</a></td>
-                        <td><a href="deleteMedicine.php?id=<?php echo $documento['_id'] ?>" class="btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a></td>
+                        <td><a href="modifyMedicine.php?id=<?php echo $documento['Id'] ?>" class="btn btn-warning"><i class="icon-pencil icon-white"></i> Modify</a></td>
+                        <td><a href="deleteMedicine.php?id=<?php echo $documento['Id'] ?>" class="btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a></td>
 
                     </tr>
                     <?php

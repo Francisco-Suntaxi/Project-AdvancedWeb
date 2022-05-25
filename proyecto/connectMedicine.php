@@ -1,5 +1,7 @@
 <?php 
-	$mongo = new Mongo();
-	$db = $mongo->selectDB("farmaciadb");
-	$medicines = $mongo->selectCollection($db,"medicinas");
+require 'vendor/autoload.php';
+$connection = new MongoDB\Client;
+$mongo = new MongoDB\Client('mongodb://localhost:27017');
+$db = $mongo->farmaciadb;
+$medicines = $db->medicinas;
 ?>
