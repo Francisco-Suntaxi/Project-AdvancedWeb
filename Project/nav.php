@@ -11,6 +11,13 @@
 	    	Home	
 	        </a>
 	    </li>
+		<li class="active">
+	    	<a href="index.html">
+	    		<i class="icon-home icon-white">	   	
+	    		</i>
+	    	Log out	
+	        </a>
+	    </li>
 
 	  </ul>    
 	</div>	
