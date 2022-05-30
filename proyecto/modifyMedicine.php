@@ -36,7 +36,30 @@
                     <input type="text" name="descriptionMedicine" id="inputDescription" class="input-xlarge" value=<?php echo $medicinesAux["Description"] ?>>
                 </div>
             </div>
-            
+            <div class="control-group">
+                <label class="control-label" for="quantityMedicine">Quantity</label>
+                <div class="controls">
+                    <input type="text" name="quantityMedicine" id="quantityMedicine" class="input-xlarge" value=<?php echo $medicinesAux["Quantity"] ?>>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputPrice">Price</label>
+                <div class="controls">
+                    <input type="text" name="priceMedicine" id="inputPrice" class="input-xlarge" value=<?php echo $medicinesAux["Price"] ?>>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputDateEl">Elaboration Date</label>
+                <div class="controls">
+                    <input type="text" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" value=<?php echo $medicinesAux["ElaborationDate"] ?>>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputDateEx">Expiration Date</label>
+                <div class="controls">
+                    <input type="text" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" value=<?php echo $medicinesAux["ExpirationDate"] ?>>
+                </div>
+            </div>
                 <div class="control-group">
                     <div class="controls">
                         <input type="hidden" name="id" value="<?php echo $id ?>" />

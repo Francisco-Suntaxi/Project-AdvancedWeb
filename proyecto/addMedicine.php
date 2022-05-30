@@ -1,18 +1,14 @@
 <?php
-	require 'vendor/autoload.php';
-	$connection = new MongoDB\Client;
-
-
-	$mongo = new MongoDB\Client('mongodb://localhost:27017');
-	$db = $mongo->farmaciadb;
-	$medicines = $db->medicinas;
-
-
+	require_once("connectMedicine.php");
 	$Name = $_POST["nameMedicine"];
 	$Id = $_POST["idMedicine"];
 	$Description = $_POST["descriptionMedicine"];
+	$Price = $_POST["priceMedicine"];
+	$Quantity = $_POST["quantityMedicine"];
+	$ElabDate = $_POST["ElaborationDateMedicine"];
+	$ExpDate = $_POST["ExpirationDateMedicine"];
 	
-	$newMedicine = array("Name"=>$Name,"Id"=>$Id,"Description"=>$Description);
+	$newMedicine = array("Name"=>$Name,"Id"=>$Id,"Description"=>$Description,"Price"=>$Price,"Quantity"=>$Quantity,"ElaborationDate"=>$ElabDate,"ExpirationDate"=>$ExpDate);
 	$medicines->insertOne($newMedicine);
 
 	header("Refresh: 0;url=index.php?mensaje=2")
