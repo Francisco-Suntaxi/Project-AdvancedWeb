@@ -45,7 +45,30 @@
                     <input type="text" name="descriptionMedicine" id="inputDescription" class="input-xlarge" placeholder="Description of Medicine"/>
                 </div>
             </div>
-            
+            <div class="control-group">
+                <label class="control-label" for="quantityMedicine">Quantity</label>
+                <div class="controls">
+                    <input type="text" name="quantityMedicine" id="quantityMedicine" class="input-xlarge" placeholder="Quantity of Medicine"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputPrice">Price</label>
+                <div class="controls">
+                    <input type="text" name="priceMedicine" id="inputPrice" class="input-xlarge" placeholder="Price of Medicine"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputDateEl">Elaboration Date</label>
+                <div class="controls">
+                    <input type="text" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" placeholder="Elaboration Date of Medicine"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputDateEx">Expiration Date</label>
+                <div class="controls">
+                    <input type="text" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" placeholder="Expiration Date of Medicine"/>
+                </div>
+            </div>
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn btn-default btn-primary"><i class="icon-book icon-white"></i> Save Medicine</button>
@@ -63,6 +86,8 @@
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Price</th>
+                        <th>Elaboration Date</th>
+                        <th>Expiration Date</th>
                         <th>Modify</th>
                         <th>Delete</th>
                         </tr>
@@ -76,22 +101,25 @@
                             foreach ($documentos as $documento) {                        
                     ?>
                     <tr>
-                        <td><?php echo $documento["idMedicine"]; ?></td>
-                        <td><?php echo $documento["nameMedicine"]; ?></td>
-                        <td><?php echo $documento["descriptionMedicine"]; ?></td>
-                        <td><?php echo $documento["quantityMedicine"]; ?></td>
-                        <td><?php echo $documento["priceMedicine"]; ?></td>
                         
-                        <td><a href="modifyMedicine.php?id=<?php echo $documento['_id'] ?>" class="btn btn-warning"><i class="icon-pencil icon-white"></i> Modify</a></td>
-                        <td><a href="deleteMedicine.php?id=<?php echo $documento['_id'] ?>" class="btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a></td>
-
+                        <td><?php echo $documento["Id"]; ?></td>
+                        <td><?php echo $documento["Name"]; ?></td>
+                        <td><?php echo $documento["Description"]; ?></td>
+                        <td><?php echo $documento["Quantity"]; ?></td>
+                        <td><?php echo $documento["Price"]; ?></td>
+                        <td><?php echo $documento["ElaborationDate"]; ?></td>
+                        <td><?php echo $documento["ExpirationDate"]; ?></td>
+                        
+                        <td><a href="modifyMedicine.php?id=<?php echo $documento['Id'] ?>" class="btn btn-warning"><i class="icon-pencil icon-white"></i> Modify</a></td>
+                        <td><a href="deleteMedicine.php?id=<?php echo $documento['Id'] ?>" class="btn btn-danger"><i class="icon-remove icon-white"></i> Delete</a></td>
+             
                     </tr>
                     <?php
                         }
                     }else{
                     ?>
                     <tr>
-                        <td colspan="4"><h4><i class="icon-info-sign"></i> Sin registros en la Base de Datos</h4></td>
+                        <td colspan="4"><h4><i class="icon-info-sign"></i> No medicines in the Database</h4></td>
                     </tr>
                     <?php } ?>
                 </tbody>
