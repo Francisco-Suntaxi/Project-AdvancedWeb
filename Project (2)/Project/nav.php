@@ -12,6 +12,13 @@
 	        </a>
 	    </li>
 		<li class="active">
+	    	<a href="findMedicine.php">
+	    		<i class="icon-home icon-white">	   	
+	    		</i>
+	    	Find Medicines	
+	        </a>
+	    </li>
+		<li class="active">
 	    	<a href="index.html">
 	    		<i class="icon-home icon-white">	   	
 	    		</i>
