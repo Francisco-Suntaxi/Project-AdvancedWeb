@@ -46,6 +46,23 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="category">Category</label>
+            <div class="controls">
+                <select name="category" id="category" class="input-xlarge">
+                    <option >Analgésicos</option>
+                    <option >Antiinflamatorios</option>
+                    <option >Antiinfecciosos</option>
+                    <option >Mucolíticos</option>
+                    <option >Antitusivos</option>
+                    <option >Antiulcerosos</option>
+                    <option >Antiácidos</option>
+                    <option >Laxantes</option>
+                    <option >Antipiréticos</option>
+                    <option >Antialérgicos</option>
+                    </select>
+            </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="quantityMedicine">Quantity</label>
                 <div class="controls">
                     <input type="text" name="quantityMedicine" id="quantityMedicine" class="input-xlarge" placeholder="Quantity of Medicine"/>
@@ -54,19 +71,19 @@
             <div class="control-group">
                 <label class="control-label" for="inputPrice">Price</label>
                 <div class="controls">
-                    <input type="text" name="priceMedicine" id="inputPrice" class="input-xlarge" placeholder="Price of Medicine"/>
+                    <input type="number" step="0.01" name="priceMedicine" id="inputPrice" class="input-xlarge" placeholder="Price of Medicine"/>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputDateEl">Elaboration Date</label>
                 <div class="controls">
-                    <input type="text" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" placeholder="Elaboration Date of Medicine"/>
+                    <input type="date" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" placeholder="Elaboration Date of Medicine" max="<?= date('Y-m-d'); ?>"/>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputDateEx">Expiration Date</label>
                 <div class="controls">
-                    <input type="text" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" placeholder="Expiration Date of Medicine"/>
+                    <input type="date" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" placeholder="Expiration Date of Medicine" min="<?= date('Y-m-d'); ?>"/>
                 </div>
             </div>
             <div class="control-group">
@@ -128,4 +145,6 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>   
     </body>
+
+    <script>datePickerId.max = new Date().toISOString().split("T")[0];</script>
 </html>
