@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="es">
 <?php
 	require_once("connectMedicine.php");
 	$Name = $_POST["findName"];
@@ -16,3 +18,4 @@
 
 	
 ?>
+</html>
