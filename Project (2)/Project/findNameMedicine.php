@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<meta charset="utf-8">
 <?php
 	require_once("connectMedicine.php");
 	$Name = $_POST["findName"];
@@ -10,7 +11,8 @@
         $documentos = $medicines->find($condicionU);
         foreach ($documentos as $documento)
         {
-           $suma= $documento["Id"]." ".$Name." ".$documento["Category"]." ".$documento["Description"]." ".$documento["Price"]." ".$documento["Quantity"]." ".$documento["ElaborationDate"]." ".$documento["ExpirationDate"];
+            $desc = $documento["Description"];
+           $suma= $documento["Id"]."%".$Name."%".$documento["Category"]."%".$documento["Description"]."%".$documento["Price"]."%".strval($documento["Quantity"])."%".strval($documento["ElaborationDate"])."%".strval($documento["ExpirationDate"]);
         }
         
 	}

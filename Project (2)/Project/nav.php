@@ -13,14 +13,14 @@
 	    </li>
 		<li class="active">
 	    	<a href="findMedicine.php">
-	    		<i class="icon-home icon-white">	   	
+	    		<i class="icon-search icon-white">	   	
 	    		</i>
 	    	Find Medicines	
 	        </a>
 	    </li>
 		<li class="active">
 	    	<a href="index.html">
-	    		<i class="icon-home icon-white">	   	
+	    		<i class="icon-off icon-white">	   	
 	    		</i>
 	    	Log out	
 	        </a>
