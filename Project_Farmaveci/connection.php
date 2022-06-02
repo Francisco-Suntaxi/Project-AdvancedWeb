@@ -13,11 +13,10 @@
 	$condicionU = array("user"=>$user,"pass"=>$pass);
 	
 	if ($medicines->count($condicionU) == 1 ){
-		header("Location: main.php");
+		header("Location: html/load.html");
 	}
 	else{
-		echo 'El usuario o password es incorrecto, DEBER CREAR ESTA PAGINA DE ERROR PARA QUE TENGA ENLACE AL INDEX NUEVAMENTE , <a href="index.html">vuelva a intenarlo</a>.<br/>';
-		echo 'USUARIO: '+ $user;
+		header("Location: html/error.html");
 	}
 
 
