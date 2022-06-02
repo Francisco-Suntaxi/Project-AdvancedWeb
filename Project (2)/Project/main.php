@@ -38,29 +38,18 @@
                 <div class="controls">
                     <input type="text" name="idMedicine" id="inputId" class="input-xlarge" placeholder="Id of Medicine"/>
                 </div>
-            </div>
+              </div>
+                <div class="control-group">
+                <label class="control-label" for="inputCategory">Category</label>
+                <div class="controls">
+                    <input type="text" name="categoryMedicine" id="inputCategory" class="input-xlarge" placeholder="Category of Medicine"/>
+                </div>
+                </div>
              <div class="control-group">
                 <label class="control-label" for="inputDescription">Description</label>
                 <div class="controls">
                     <input type="text" name="descriptionMedicine" id="inputDescription" class="input-xlarge" placeholder="Description of Medicine"/>
                 </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="category">Category</label>
-            <div class="controls">
-                <select name="category" id="category" class="input-xlarge">
-                    <option >Analgésicos</option>
-                    <option >Antiinflamatorios</option>
-                    <option >Antiinfecciosos</option>
-                    <option >Mucolíticos</option>
-                    <option >Antitusivos</option>
-                    <option >Antiulcerosos</option>
-                    <option >Antiácidos</option>
-                    <option >Laxantes</option>
-                    <option >Antipiréticos</option>
-                    <option >Antialérgicos</option>
-                    </select>
-            </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="quantityMedicine">Quantity</label>
@@ -71,19 +60,19 @@
             <div class="control-group">
                 <label class="control-label" for="inputPrice">Price</label>
                 <div class="controls">
-                    <input type="number" step="0.01" name="priceMedicine" id="inputPrice" class="input-xlarge" placeholder="Price of Medicine"/>
+                    <input type="text" name="priceMedicine" id="inputPrice" class="input-xlarge" placeholder="Price of Medicine"/>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputDateEl">Elaboration Date</label>
                 <div class="controls">
-                    <input type="date" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" placeholder="Elaboration Date of Medicine" max="<?= date('Y-m-d'); ?>"/>
+                    <input type="text" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" placeholder="Elaboration Date of Medicine"/>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputDateEx">Expiration Date</label>
                 <div class="controls">
-                    <input type="date" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" placeholder="Expiration Date of Medicine" min="<?= date('Y-m-d'); ?>"/>
+                    <input type="text" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" placeholder="Expiration Date of Medicine"/>
                 </div>
             </div>
             <div class="control-group">
@@ -100,6 +89,7 @@
                         <tr class="tr-head">
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Category</th>
                         <th>Description</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -121,6 +111,7 @@
                         
                         <td><?php echo $documento["Id"]; ?></td>
                         <td><?php echo $documento["Name"]; ?></td>
+                        <td><?php echo $documento["Category"]; ?></td>
                         <td><?php echo $documento["Description"]; ?></td>
                         <td><?php echo $documento["Quantity"]; ?></td>
                         <td><?php echo $documento["Price"]; ?></td>
@@ -145,6 +136,4 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>   
     </body>
-
-    <script>datePickerId.max = new Date().toISOString().split("T")[0];</script>
 </html>

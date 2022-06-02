@@ -29,7 +29,12 @@
                 </div>
             </div>
             <input type="hidden"  name="idMedicine" id="inputId" class="input-xlarge" value=<?php echo $medicinesAux["Id"] ?>>
-           
+            <div class="control-group">
+                <label class="control-label" for="inputCategory">Category</label>
+                <div class="controls">
+                    <input type="text" name="categoryMedicine" id="inputCategory" class="input-xlarge" value=<?php echo $medicinesAux["Category"] ?>>
+                </div>
+            </div>
              <div class="control-group">
                 <label class="control-label" for="inputDescription">Description</label>
                 <div class="controls">
@@ -48,18 +53,12 @@
                     <input type="text" name="priceMedicine" id="inputPrice" class="input-xlarge" value=<?php echo $medicinesAux["Price"] ?>>
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="inputDateEl">Elaboration Date</label>
-                <div class="controls">
-                    <input type="text" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" value=<?php echo $medicinesAux["ElaborationDate"] ?>>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputDateEx">Expiration Date</label>
-                <div class="controls">
-                    <input type="text" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" value=<?php echo $medicinesAux["ExpirationDate"] ?>>
-                </div>
-            </div>
+
+                    <input type="hidden" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" value=<?php echo $medicinesAux["ElaborationDate"] ?>>
+
+
+                    <input type="hidden" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" value=<?php echo $medicinesAux["ExpirationDate"] ?>>
+
                 <div class="control-group">
                     <div class="controls">
                         <input type="hidden" name="id" value="<?php echo $id ?>" />
