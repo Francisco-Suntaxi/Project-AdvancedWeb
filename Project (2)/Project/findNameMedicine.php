@@ -3,16 +3,16 @@
 	$Name = $_POST["findName"];
 
     $condicionU = array("Name"=>$Name);
-	$sum;
+	$suma="";
 	if ($medicines->count($condicionU) == 1 ){
         $documentos = $medicines->find($condicionU);
         foreach ($documentos as $documento)
         {
-           $sum= $documento["Id"]." ".$Name." ".$documento["Description"]." ".$documento["Price"]." ".$documento["Quantity"]." ".$documento["ElaborationDate"]." ".$documento["ExpirationDate"];
+           $suma= $documento["Id"]." ".$Name." ".$documento["Category"]." ".$documento["Description"]." ".$documento["Price"]." ".$documento["Quantity"]." ".$documento["ElaborationDate"]." ".$documento["ExpirationDate"];
         }
         
 	}
-    header("Refresh: 0;url=findMedicine.php?condition=".$sum);
+    header("Refresh: 0;url=findMedicine.php?condition=".$suma);
 
 	
 ?>
