@@ -19,6 +19,13 @@
 	        </a>
 	    </li>
 		<li class="active">
+	    	<a href="expiredMedicines.php">
+	    		<i class="icon-tasks icon-white">	   	
+	    		</i>
+	    	Control Date	
+	        </a>
+	    </li>
+		<li class="active">
 	    	<a href="index.html">
 	    		<i class="icon-off icon-white">	   	
 	    		</i>

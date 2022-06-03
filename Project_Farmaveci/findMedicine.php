@@ -88,9 +88,20 @@
             <h1>Find Medicines  <small>for Category</small></h1>
             <div class="control-group">
                 <label class="control-label" for="findCategory">Category</label>
-                <div class="controls">
-                    <input type="text" name="findCategory" id="findCategory" class="input-xlarge" placeholder="Category of Medicine"/>
-                </div>
+            <div class="controls">
+                <select name="findCategory" id="findCategory" class="input-xlarge">
+                    <option >Analgésicos</option>
+                    <option >Antiinflamatorios</option>
+                    <option >Antiinfecciosos</option>
+                    <option >Mucolíticos</option>
+                    <option >Antitusivos</option>
+                    <option >Antiulcerosos</option>
+                    <option >Antiácidos</option>
+                    <option >Laxantes</option>
+                    <option >Antipiréticos</option>
+                    <option >Antialérgicos</option>
+                    </select>
+            </div>
             </div>
             
             <div class="control-group">
