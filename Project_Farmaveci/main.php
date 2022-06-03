@@ -6,12 +6,15 @@
         ?>
     </head>
     <body>
-        <div class="navbar navbar navbar-inverse navbar-fixed-top">
+        <div class="">			
         	<?php
         		require_once("nav.php");
         	?>
         </div>
-        <div class="container">
+		
+		<hr>
+		
+        <div class="container text-center">
             <?php
             error_reporting(0);
             $mensaje = $_GET["mensaje"];
@@ -25,75 +28,79 @@
                 echo "<p class='btn  btn-warning'><i class='icon-refresh icon-white'></i> El Medicamento fue modificado con éxito.</p><br><br>";
             }
         ?>
-        <form class="form-horizontal" action="addMedicine.php" method="post">
-            <h1>Medicine System Control <small>date of medicines</small></h1>
-            <div class="control-group">
-                <label class="control-label" for="inputName">Name</label>
-                <div class="controls">
-                    <input type="text" name="nameMedicine" id="inputName" class="input-xlarge" placeholder="Name of Medicine"/>
-                </div>
-            </div>
-             <div class="control-group">
-                <label class="control-label" for="inputId">Id</label>
-                <div class="controls">
-                    <input type="text" name="idMedicine" id="inputId" class="input-xlarge" placeholder="Id of Medicine"/>
-                </div>
-            </div>
-             <div class="control-group">
-                <label class="control-label" for="inputDescription">Description</label>
-                <div class="controls">
-                    <input type="text" name="descriptionMedicine" id="inputDescription" class="input-xlarge" placeholder="Description of Medicine"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="categoryMedicine">Category</label>
-            <div class="controls">
-                <select name="categoryMedicine" id="categoryMedicine" class="input-xlarge">
-                    <option >Analgésicos</option>
-                    <option >Antiinflamatorios</option>
-                    <option >Antiinfecciosos</option>
-                    <option >Mucolíticos</option>
-                    <option >Antitusivos</option>
-                    <option >Antiulcerosos</option>
-                    <option >Antiácidos</option>
-                    <option >Laxantes</option>
-                    <option >Antipiréticos</option>
-                    <option >Antialérgicos</option>
-                    </select>
-            </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="quantityMedicine">Quantity</label>
-                <div class="controls">
-                    <input type="text" name="quantityMedicine" id="quantityMedicine" class="input-xlarge" placeholder="Quantity of Medicine"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputPrice">Price</label>
-                <div class="controls">
-                    <input type="number" step="0.01" name="priceMedicine" id="inputPrice" class="input-xlarge" placeholder="Price of Medicine"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputDateEl">Elaboration Date</label>
-                <div class="controls">
-                    <input type="date" name="ElaborationDateMedicine" id="inputDateEl" class="input-xlarge" placeholder="Elaboration Date of Medicine" max="<?= date('Y-m-d'); ?>"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputDateEx">Expiration Date</label>
-                <div class="controls">
-                    <input type="date" name="ExpirationDateMedicine" id="inputDateEx" class="input-xlarge" placeholder="Expiration Date of Medicine" min="<?= date('Y-m-d'); ?>"/>
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" class="btn btn-default btn-primary"><i class="icon-book icon-white"></i> Save Medicine</button>
-                </div>
-            </div>
-             
-        </form>
-
+			<h1>Medicine System Control <small><br>Date of medicines</small></h1>
+			<div class="container col-4">
+				<form action="addMedicine.php" method="post">
+					<fieldset class="form-control">
+						<div class="control-group">
+							<label class="form-check-inline" for="inputName">Name</label>
+							<div class="controls">
+								<input type="text" name="nameMedicine" id="inputName" class="form-control" placeholder="Name of Medicine"/>
+							</div>
+						</div>
+						 <div class="control-group">
+							<label class="form-check-inline" for="inputId">Id</label>
+							<div class="controls">
+								<input type="text" name="idMedicine" id="inputId" class="form-control" placeholder="Id of Medicine"/>
+							</div>
+						</div>
+						 <div class="control-group">
+							<label class="form-check-inline" for="inputDescription">Description</label>
+							<div class="controls">
+								<input type="text" name="descriptionMedicine" id="inputDescription" class="form-control" placeholder="Description of Medicine"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="form-check-inline" for="categoryMedicine">Category</label>
+						<div class="controls">
+							<select name="categoryMedicine" id="categoryMedicine" class="form-select" >
+								<option >Analgésicos</option>
+								<option >Antiinflamatorios</option>
+								<option >Antiinfecciosos</option>
+								<option >Mucolíticos</option>
+								<option >Antitusivos</option>
+								<option >Antiulcerosos</option>
+								<option >Antiácidos</option>
+								<option >Laxantes</option>
+								<option >Antipiréticos</option>
+								<option >Antialérgicos</option>
+								</select>
+						</div>
+						</div>
+						<div class="control-group">
+							<label class="form-check-inline" for="quantityMedicine">Quantity</label>
+							<div class="controls">
+								<input type="text" name="quantityMedicine" id="quantityMedicine" class="form-control" placeholder="Quantity of Medicine"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="form-check-inline" for="inputPrice">Price</label>
+							<div class="controls">
+								<input type="number" step="0.01" name="priceMedicine" id="inputPrice" class="form-control" placeholder="Price of Medicine"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="form-check-inline" for="inputDateEl">Elaboration Date</label>
+							<div class="controls">
+								<input type="date" name="ElaborationDateMedicine" id="inputDateEl" class="form-control" placeholder="Elaboration Date of Medicine" max="<?= date('Y-m-d'); ?>"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="form-check-inline" for="inputDateEx">Expiration Date</label>
+							<div class="controls">
+								<input type="date" name="ExpirationDateMedicine" id="inputDateEx" class="form-control" placeholder="Expiration Date of Medicine" min="<?= date('Y-m-d'); ?>"/>
+							</div>
+						</div><br>
+						<div class="control-group">			
+							<button type="submit" class="btn btn-default btn-primary">Save Medicine</button>
+						
+						</div>
+					</fieldset>
+			</form>
+			</div><br>
+			
+			<hr>
+			
             <h3>Registered Medicine Table</h3>
                 <table class="table table-striped table-bordered">
                     <thead>
@@ -143,9 +150,18 @@
                     <?php } ?>
                 </tbody>
             </table>
-        </div> 
+        </div> <br>
+		
+		<hr>
+		
+		<footer class="container">
+			<a  href=""></a>
+			<p class="float-end"></p>
+			<p>&copy; 2021–2022 FARMAVECI.</p>
+		</footer>
+		
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>   
+        <script src="js/bootstrap.min.js"></script>   
     </body>
 
     <script>datePickerId.max = new Date().toISOString().split("T")[0];</script>
