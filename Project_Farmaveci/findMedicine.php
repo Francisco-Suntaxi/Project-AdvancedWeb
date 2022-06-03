@@ -98,11 +98,23 @@
 				<h1>Find Medicines  <small>for Category</small></h1>
 				<div class="container col-4">
 					<form class="form-horizontal" action="findCategoryMedicine.php" method="post">
-						<div class="control-group">
-							<label class="control-label" for="findCategory">Category</label>
-							<div class="controls">
-								<input type="text" name="findCategory" id="findCategory" class="form-control me-2" placeholder="Category of Medicine"/>
-							</div>
+						
+                        <div class="control-group">
+							<label class="form-check-inline" for="findCategory">Category</label>
+						<div class="controls">
+							<select name="findCategory" id="findCategory" class="form-select" >
+								<option >Analgésicos</option>
+								<option >Antiinflamatorios</option>
+								<option >Antiinfecciosos</option>
+								<option >Mucolíticos</option>
+								<option >Antitusivos</option>
+								<option >Antiulcerosos</option>
+								<option >Antiácidos</option>
+								<option >Laxantes</option>
+								<option >Antipiréticos</option>
+								<option >Antialérgicos</option>
+								</select>
+						</div>
 						</div><br>
 
 						<div class="control-group">
@@ -122,8 +134,8 @@
 							<th>Name</th>
 							<th>Category</th>
 							<th>Description</th>
-							<th>Quantity</th>
 							<th>Price</th>
+                            <th>Quantity</th>
 							<th>Elaboration Date</th>
 							<th>Expiration Date</th>
 							</tr>
