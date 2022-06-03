@@ -15,7 +15,7 @@
            <?php
             error_reporting(0);
             $string = $_GET["condition"];
-            list($id, $name, $cat, $desc, $price, $quant, $elabdate,$exdate) = explode("%", $string);
+            $datos = explode(" ", $string);
            ?>
         <form class="form-horizontal" action="findNameMedicine.php" method="post">
             <h1>Find Medicines  <small>for Name</small></h1>
@@ -57,14 +57,14 @@
                                                                        
                     ?>
                     <tr>
-                        <td><?php echo $id ?></td>
-                        <td><?php echo $name ?></td>
-                        <td><?php echo $cat ?></td>
-                        <td><?php echo $desc ?></td>
-                        <td><?php echo $price ?></td>
-                        <td><?php echo $quant ?></td>
-                        <td><?php echo $elabdate ?></td>
-                        <td><?php echo $exdate ?></td>
+                        <td><?php echo $datos[0] ?></td>
+                        <td><?php echo $datos[1] ?></td>
+                        <td><?php echo $datos[2] ?></td>
+                        <td><?php echo $datos[3] ?></td>
+                        <td><?php echo $datos[4] ?></td>
+                        <td><?php echo $datos[5] ?></td>
+                        <td><?php echo $datos[6]?></td>
+                        <td><?php echo $datos[7] ?></td>
              
                     </tr>
                     <?php
@@ -132,8 +132,8 @@
                         <td><?php echo $datos1[5] ?></td>
                         <td><?php echo $datos1[6]?></td>
                         <td><?php echo $datos1[7] ?></td>
-             
                     </tr>
+
                     <?php
                      
                     }else{

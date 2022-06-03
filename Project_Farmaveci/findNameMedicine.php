@@ -11,8 +11,8 @@
         $documentos = $medicines->find($condicionU);
         foreach ($documentos as $documento)
         {
-            $desc = $documento["Description"];
-           $suma= $documento["Id"]."%".$Name."%".$documento["Category"]."%".$documento["Description"]."%".$documento["Price"]."%".strval($documento["Quantity"])."%".strval($documento["ElaborationDate"])."%".strval($documento["ExpirationDate"]);
+           $desc = $documento["Description"];
+           $suma= $documento["Id"]." ".$Name." ".$documento["Category"]." ".$documento["Description"]." ".strval($documento["Price"])." ".strval($documento["Quantity"])." ".strval($documento["ElaborationDate"])." ".strval($documento["ExpirationDate"]);
         }
         
 	}
