@@ -1,9 +1,7 @@
-import { Fragment } from "react";
+import NavBar from './NavBar'
+
 export default function PageInformation() {
     return (
-            <Fragment>
-               <h1>Hola</h1>
-            </Fragment>
-
+            <NavBar/>
     );
 }
