@@ -125,3 +125,39 @@ export const deleteUser = async (request, response) => {
 
 };
 
+//delete
+export const deleteMedicine = async (request, response) => {
+    try {
+        await Medicine.deleteOne({id: request.params.id});
+        response.status(200).json({message: 'Deleted successfully'});        
+    } catch (error) {
+        response.status(404).json({message: error.message});
+    }     
+};
+
+export const deleteMedicineCat = async (request, response) => {
+    try {
+        await Medicine.deleteMany({category: request.params.category});
+        response.status(200).json({message: 'Deleted successfully'});        
+    } catch (error) {
+        response.status(404).json({message: error.message});
+    }     
+};
+
+export const deleteMedicineQuan = async (request, response) => {
+    try {
+        await Medicine.deleteMany({quantity: request.params.quantity});
+        response.status(200).json({message: 'Deleted successfully'});        
+    } catch (error) {
+        response.status(404).json({message: error.message});
+    }     
+};
+
+export const deleteMedicineDate = async (request, response) => {
+    try {
+        await Medicine.deleteMany({expDate: request.params.date});
+        response.status(200).json({message: 'Deleted successfully'});        
+    } catch (error) {
+        response.status(404).json({message: error.message});
+    }     
+};
