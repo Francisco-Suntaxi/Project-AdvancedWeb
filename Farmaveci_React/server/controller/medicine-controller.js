@@ -80,7 +80,8 @@ export const addMedicineIncomplete = async (request, response) => {
 export const getAllMedicines = async (request, response) => {
     try {
 
-        const medicines = await Medicine.find({});
+        const medicines = await Medicine.find({}).sort({id:1});
+        
         response.status(200).json(medicines);
     } catch (error) {
         response.status(404).json({ message: error.message });
@@ -102,7 +103,7 @@ export const getMedicine = async (request, response) => {
 export const getMedicineName = async (request, response) => {
     try {
 
-        const medicine = await Medicine.findOne({ name: request.params.name });
+        const medicine = await Medicine.findOne({ name: request.params.name }).sort({id:1});
         response.status(200).json(medicine);
     } catch (error) {
         response.status(404).json({ message: error.message });
@@ -112,7 +113,7 @@ export const getMedicineName = async (request, response) => {
 export const getMedicineCategory = async (request, response) => {
     try {
 
-        const medicine = await Medicine.findOne({ category: request.params.category });
+        const medicine = await Medicine.findOne({ category: request.params.category }).sort({id:1});
         response.status(200).json(medicine);
     } catch (error) {
         response.status(404).json({ message: error.message });
