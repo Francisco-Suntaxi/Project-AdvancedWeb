@@ -122,37 +122,30 @@ export const getMedicineCategory = async (request, response) => {
 
 export const editMedicineId = async (request, response) => {
     const medicine = await Medicine.findOne({ id: request.params.id });
-    if(request.body.name)
-    {
-        medicine.name= request.body.name;
+    if (request.body.name) {
+        medicine.name = request.body.name;
     }
-    if(request.body.description)
-    {
-        medicine.description= request.body.description;
+    if (request.body.description) {
+        medicine.description = request.body.description;
     }
-    if(request.body.category)
-    {
-        medicine.category= request.body.category;
+    if (request.body.category) {
+        medicine.category = request.body.category;
     }
-    if(request.body.quantity)
-    {
-        medicine.quantity= request.body.quantity;
+    if (request.body.quantity) {
+        medicine.quantity = request.body.quantity;
     }
-    if(request.body.price)
-    {
-        medicine.price= request.body.price;
+    if (request.body.price) {
+        medicine.price = request.body.price;
     }
-    if(request.body.elabDate)
-    {
-        medicine.elabDate= request.body.elabDate;
+    if (request.body.elabDate) {
+        medicine.elabDate = request.body.elabDate;
     }
-    if(request.body.expDate)
-    {
-        medicine.expDate= request.body.expDate;
+    if (request.body.expDate) {
+        medicine.expDate = request.body.expDate;
     }
     try {
         await medicine.save();
-        response.status(200).json({message: ' medicine successfully updated'});
+        response.status(200).json({ message: ' medicine successfully updated' });
     } catch (error) {
         response.status(404).json({ message: error.message });
     }
@@ -161,7 +154,7 @@ export const editMedicineName = async (request, response) => {
     const medicine = await Medicine.findOne({ name: request.params.name });
     const medicines = await Medicine.find({});
     var idAux = 0;
-    var idAux1= 0;
+    var idAux1 = 0;
 
     for (let i = 0; i < medicines.length - 1; i++) {
         const i1 = i + 1;
@@ -172,83 +165,70 @@ export const editMedicineName = async (request, response) => {
     }
 
     for (let i = 0; i < medicines.length - 1; i++) {
-       
+
         if (medicines[i].id == request.body.id && medicines[i].name != request.params.name) {
-            idAux = idAux+1;
+            idAux = idAux + 1;
         }
-        if(idAux>= 1){
-            medicine.id= idAux1+1;
+        if (idAux >= 1) {
+            medicine.id = idAux1 + 1;
         }
-        if(idAux== 0){
-            medicine.id= request.body.id;
+        if (idAux == 0) {
+            medicine.id = request.body.id;
         }
 
 
     }
-    if(request.body.description)
-    {
-        medicine.description= request.body.description;
+    if (request.body.description) {
+        medicine.description = request.body.description;
     }
-    if(request.body.category)
-    {
-        medicine.category= request.body.category;
+    if (request.body.category) {
+        medicine.category = request.body.category;
     }
-    if(request.body.quantity)
-    {
-        medicine.quantity= request.body.quantity;
+    if (request.body.quantity) {
+        medicine.quantity = request.body.quantity;
     }
-    if(request.body.price)
-    {
-        medicine.price= request.body.price;
+    if (request.body.price) {
+        medicine.price = request.body.price;
     }
-    if(request.body.elabDate)
-    {
-        medicine.elabDate= request.body.elabDate;
+    if (request.body.elabDate) {
+        medicine.elabDate = request.body.elabDate;
     }
-    if(request.body.expDate)
-    {
-        medicine.expDate= request.body.expDate;
+    if (request.body.expDate) {
+        medicine.expDate = request.body.expDate;
     }
     try {
         await medicine.save();
-        response.status(200).json({message: ' medicine successfully updated'});
+        response.status(200).json({ message: ' medicine successfully updated' });
     } catch (error) {
         response.status(404).json({ message: error.message });
     }
 };
 export const editMedicineCategory = async (request, response) => {
     const medicine = await Medicine.findOne({ category: request.params.category });
-    if(request.body.name)
-    {
-        medicine.name= request.body.name;
+    if (request.body.name) {
+        medicine.name = request.body.name;
     }
-    if(request.body.description)
-    {
-        medicine.description= request.body.description;
+    if (request.body.description) {
+        medicine.description = request.body.description;
     }
-    if(request.body.id)
-    {
-        medicine.id= request.body.id;
+    if (request.body.id) {
+        medicine.id = request.body.id;
     }
-    if(request.body.quantity)
-    {
-        medicine.quantity= request.body.quantity;
+    if (request.body.quantity) {
+        medicine.quantity = request.body.quantity;
     }
-    if(request.body.price)
-    {
-        medicine.price= request.body.price;
+    if (request.body.price) {
+        medicine.price = request.body.price;
     }
-    if(request.body.elabDate)
-    {
-        medicine.elabDate= request.body.elabDate;
+    if (request.body.elabDate) {
+        medicine.elabDate = request.body.elabDate;
     }
-    if(request.body.expDate)
-    {
-        medicine.expDate= request.body.expDate;
+    if (request.body.expDate) {
+        medicine.expDate = request.body.expDate;
     }
     try {
         await medicine.save();
-        response.status(200).json({message: ' medicine successfully updated'});
+        response.status(200).json({ message: ' medicine successfully updated' });
     } catch (error) {
         response.status(404).json({ message: error.message });
     }
@@ -256,37 +236,30 @@ export const editMedicineCategory = async (request, response) => {
 
 export const editMedicineQuantity = async (request, response) => {
     const medicine = await Medicine.findOne({ quantity: request.params.quantity });
-    if(request.body.name)
-    {
-        medicine.name= request.body.name;
+    if (request.body.name) {
+        medicine.name = request.body.name;
     }
-    if(request.body.description)
-    {
-        medicine.description= request.body.description;
+    if (request.body.description) {
+        medicine.description = request.body.description;
     }
-    if(request.body.category)
-    {
-        medicine.category= request.body.category;
+    if (request.body.category) {
+        medicine.category = request.body.category;
     }
-    if(request.body.id)
-    {
-        medicine.id= request.body.id;
+    if (request.body.id) {
+        medicine.id = request.body.id;
     }
-    if(request.body.price)
-    {
-        medicine.price= request.body.price;
+    if (request.body.price) {
+        medicine.price = request.body.price;
     }
-    if(request.body.elabDate)
-    {
-        medicine.elabDate= request.body.elabDate;
+    if (request.body.elabDate) {
+        medicine.elabDate = request.body.elabDate;
     }
-    if(request.body.expDate)
-    {
-        medicine.expDate= request.body.expDate;
+    if (request.body.expDate) {
+        medicine.expDate = request.body.expDate;
     }
     try {
         await medicine.save();
-        response.status(200).json({message: ' medicine successfully updated'});
+        response.status(200).json({ message: ' medicine successfully updated' });
     } catch (error) {
         response.status(404).json({ message: error.message });
     }
@@ -302,13 +275,40 @@ export const deleteMedicine = async (request, response) => {
 
 };
 export const deleteMedicineActualDate = async (request, response) => {
+    const reqDate = request.params.actualDate;
+    let oldDate = reqDate.split('-');
+    let oldDay = Number(oldDate[0]);
+    let oldMonth = Number(oldDate[1]);
+    let oldYear = Number(oldDate[2]);
+    console.log(oldDay + ' ' + oldMonth + ' ' + oldYear);
 
-    try {
-        await Medicine.deleteOne({ expDate: request.params.actualDate.toString() });
-        response.status(200).json({ message: 'Deleted successfully' });
-    } catch (error) {
-        response.status(404).json({ message: error.message });
+    //const dateMedicines = await Medicine.find({id: oldDay[0]})
+    // console.log(dateMedicines)
+
+    let date = new Date();
+    let day = Number(date.getDate());
+    let month = Number(date.getMonth() + 1);
+    let year = Number(date.getFullYear());
+    console.log(day + ' ' + month + ' ' + year);
+
+    if (oldYear <= year && oldMonth <= month) {
+        if (oldDay > day){
+            response.status(200).json({ message: 'The medicine will expire in the following days' });
+        }
+        if (oldDay <= day) {
+            try {
+                await Medicine.deleteMany({ expDate: request.params.actualDate });
+                response.status(200).json({ message: 'Expired medicine. Deleted successfully' });
+            } catch (error) {
+                response.status(404).json({ message: error.message });
+            }
+        }
+
+    } else {
+        response.status(200).json({ message: 'The medicine will expire in the following years' });
     }
+
+
 
 };
 

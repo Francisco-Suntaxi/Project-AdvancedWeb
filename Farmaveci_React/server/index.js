@@ -11,7 +11,7 @@ dotenv.config();
 app.use(bodyParser.json({extended: true}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use('/',Routes);
+app.use('/farmaveci',Routes);
 
 const port = process.env.PORT || 8000;
 const username= process.env.DB_USERNAME;
