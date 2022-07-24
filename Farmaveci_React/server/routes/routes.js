@@ -20,7 +20,7 @@ router.get('/category/:category',getMedicineCategory);
 router.put('/:id',editMedicineId);
 router.put('/name/:name',editMedicineName);// Bussines Uri
 router.put('/category/:category',editMedicineCategory);
-router.put('/quantity/:quantity',editMedicineQuantity);
+router.put('/quantity/:id',editMedicineQuantity);
 
 //Delete methods
 router.delete('/:id',deleteMedicine);

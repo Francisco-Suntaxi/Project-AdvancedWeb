@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8000/medicineIncomplete HTTP/1.1
+POST http://localhost:8000/farmaveci/medicineIncomplete HTTP/1.1
 Content-Type: application/json
 
 {
@@ -7,7 +7,7 @@ Content-Type: application/json
     "name": "Ibuprofeno",
     "description": "",
     "category": "String",
-    "quantity": "1",
+    "quantity": "9",
     "price": "String",
     "elabDate": "String",
     "expDate": "String"
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8000/all HTTP/1.1
+GET http://localhost:8000/farmaveci/all HTTP/1.1
 
 ###
 
@@ -37,18 +37,9 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8000/name/Ibuprofeno HTTP/1.1
-Content-Type: application/json
+PUT http://localhost:8000/farmaveci/quantity/10 HTTP/1.1
 
-{
-    "id": "111",
-    "quantity": "2",
-    "description": "descripcion",
-    "name": "Ibuprofeno1",
-    "price": "String",
-    "elabDate": "String",
-    "expDate": "String"
-}
+
 
 ###
 DELETE http://localhost:8000/111 HTTP/1.1

@@ -236,28 +236,9 @@ export const editMedicineCategory = async (request, response) => {
 };
 
 export const editMedicineQuantity = async (request, response) => {
-    const medicine = await Medicine.findOne({ quantity: request.params.quantity });
-    if (request.body.name) {
-        medicine.name = request.body.name;
-    }
-    if (request.body.description) {
-        medicine.description = request.body.description;
-    }
-    if (request.body.category) {
-        medicine.category = request.body.category;
-    }
-    if (request.body.id) {
-        medicine.id = request.body.id;
-    }
-    if (request.body.price) {
-        medicine.price = request.body.price;
-    }
-    if (request.body.elabDate) {
-        medicine.elabDate = request.body.elabDate;
-    }
-    if (request.body.expDate) {
-        medicine.expDate = request.body.expDate;
-    }
+    const medicine = await Medicine.findOne({ id: request.params.id });
+    medicine.quantity=medicine.quantity-1;
+    
     try {
         await medicine.save();
         response.status(200).json({ message: ' medicine successfully updated' });
