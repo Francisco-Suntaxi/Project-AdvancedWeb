@@ -275,41 +275,44 @@ export const deleteMedicine = async (request, response) => {
 
 };
 export const deleteMedicineActualDate = async (request, response) => {
-    const reqDate = request.params.actualDate;
-    let oldDate = reqDate.split('-');
-    let oldDay = Number(oldDate[0]);
-    let oldMonth = Number(oldDate[1]);
-    let oldYear = Number(oldDate[2]);
-    console.log(oldDay + ' ' + oldMonth + ' ' + oldYear);
-
-    //const dateMedicines = await Medicine.find({id: oldDay[0]})
-    // console.log(dateMedicines)
 
     let date = new Date();
     let day = Number(date.getDate());
     let month = Number(date.getMonth() + 1);
     let year = Number(date.getFullYear());
-    console.log(day + ' ' + month + ' ' + year);
+    //console.log(day + ' ' + month + ' ' + year);
 
-    if (oldYear <= year && oldMonth <= month) {
-        if (oldDay > day){
-            response.status(200).json({ message: 'The medicine will expire in the following days' });
-        }
-        if (oldDay <= day) {
-            try {
-                await Medicine.deleteMany({ expDate: request.params.actualDate });
-                response.status(200).json({ message: 'Expired medicine. Deleted successfully' });
-            } catch (error) {
-                response.status(404).json({ message: error.message });
-            }
-        }
+    var dateMedicines = await Medicine.find({})
+    var expMedicines = [];
+    var j = 0;
+    for (let i = 0; i < dateMedicines.length; i++) {
+        let oldDate = dateMedicines[i]['expDate']
+        let expDate = oldDate.split('-');
+        let expDay = Number(expDate[0]);
+        let expMonth = Number(expDate[1]);
+        let expYear = Number(expDate[2]);
 
-    } else {
-        response.status(200).json({ message: 'The medicine will expire in the following years' });
+        if (expYear <= year && expMonth <= month && expDay <= day) {
+            expMedicines[j] = dateMedicines[i]['id'];
+            j = j + 1;
+        }
     }
 
-
-
+    j=0;
+    console.log(expMedicines)
+    for (let i = 0; i < expMedicines.length; i++) {
+        try {
+            await Medicine.deleteOne({ id: expMedicines[i] });
+            j=j+1;
+        } catch (error) {
+            response.status(404).json({ message: error.message });
+        }
+    }
+    
+    if (j=expMedicines.length){
+        response.status(200).json({ message: 'Expired medicine. Deleted successfully' });
+    }
+    
 };
 
 export const deleteMedicineQuantity = async (request, response) => {
