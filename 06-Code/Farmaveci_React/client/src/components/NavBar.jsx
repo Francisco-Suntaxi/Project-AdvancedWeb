@@ -20,7 +20,6 @@ function NavBar() {
                 <Tabs to='/'>Salir</Tabs>
                 <Tabs to="/all">Tabla de Medicinas</Tabs>
                 <Tabs to="/add">Añadir Medicina</Tabs>
-                <Tabs to="/edit">Editar Medicina</Tabs>
                 <Tabs to="/findC">Buscar Medicina</Tabs>
             </Toolbar>
         </Header>

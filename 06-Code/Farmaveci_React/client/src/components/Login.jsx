@@ -5,6 +5,7 @@ import logo from '../images/img1.jpg';
 import '../css/styleLogin.css';
 
 
+
 const ContainerS = styled(FormGroup)`
     width: 70%;
     display: grid;
@@ -15,6 +16,7 @@ const ContainerS = styled(FormGroup)`
     column-gap: 10%;
     margin: 5% auto 0 auto;
     background-color: white;
+    margin-bottom: 10%;
     box-shadow:
        inset 0 -3em 3em rgba(0,0,0,0.1),
              0 0  0 2px rgb(255,255,255),
@@ -53,11 +55,12 @@ export default function Login() {
                 </FormControl>
                 <FormControl>
                     
-                        <ButtonLogIn  onClick={() =>{ const boll = true; if(boll===true){window.location= '/page'}}} variant='contained'>
+                        <ButtonLogIn  onClick={() =>{ const boll = true; if(boll===true){window.location= '/all'}}} variant='contained'>
                            Iniciar Sesion
                         </ButtonLogIn>
                 </FormControl>
             </ContainerS>
+            
         </Fragment>
 
     );

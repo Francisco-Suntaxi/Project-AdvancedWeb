@@ -263,7 +263,6 @@ export const deleteMedicineActualDate = async (request, response) => {
     j=0;
     
     for (let i = 0; i < expMedicines.length; i++) {
-        console.log(expMedicines[i])
         try {
             await Medicine.deleteOne({ id: expMedicines[i] });
             j=j+1;

@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/page" element={<PageInformation />} />
         <Route path="/all" element={<TableAllMedicines />} />
-        <Route path="/edit" element={<EditMedicine />} />
+        <Route path="/edit/:id" element={<EditMedicine />} />
         <Route path="/add" element={<AddMedicine />} />
         <Route path="/findC" element={<SearchMedicinesCategory />} />
       </Routes>

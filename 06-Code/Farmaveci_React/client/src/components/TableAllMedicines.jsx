@@ -1,89 +1,17 @@
 import React from 'react';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Typography, Button, FormGroup, styled } from '@mui/material';
+import { getMedicines, deleteMedicine} from '../service/api';
+import { useState, useEffect, Fragment} from 'react';
 import NavBar from './NavBar';
+import Footer from './Footer';
 
 
-// Generate Order Data
-function createData(id, name, category, description, quantity, price, elabDate, expDate) {
-    const objectMedicine = {
-        id: 0,
-        name: '',
-        description: '',
-        category: '',
-        quantity: 0,
-        price: 0,
-        elabDate: '',
-        expDate: '',
-    };
-    objectMedicine.id = id
-    objectMedicine.name = name
-    objectMedicine.description = description
-    objectMedicine.category = category
-    objectMedicine.quantity = quantity
-    objectMedicine.price = price
-    objectMedicine.elabDate = elabDate
-    objectMedicine.expDate = expDate
-    return objectMedicine;
-}
-
-const arrayMedicine = [
-    createData(
-        1234,
-        'Aspirina',
-        'Antipiréticos',
-        '5 Tabletas',
-        10,
-        5.44,
-        "07-09-2022",
-        "07-09-2023",
-    ), createData(
-        555,
-        'Paracetamol',
-        'Analgésicos',
-        '5 Tabletas',
-        15,
-        10.44,
-        "07-09-2022",
-        "07-09-2023",
-    ),
-    createData(
-        222,
-        'Ibuprofeno',
-        'Analgésicos',
-        '6 Tabletas',
-        5,
-        8.44,
-        "07-09-2022",
-        "07-09-2023",
-    ),
-    createData(
-        556,
-        'Paracetamol',
-        'Analgésicos',
-        '5 Tabletas',
-        15,
-        10.44,
-        "07-09-2022",
-        "07-09-2023",
-    ),
-    createData(
-        123,
-        'Omeprazol ',
-        'Antiulcerosos',
-        '7 Tabletas',
-        20,
-        6.44,
-        "07-09-2022",
-        "07-09-2023",
-    ),
-
-];
 
 const ContainerS = styled(FormGroup)`
     width: 75%;
@@ -96,7 +24,8 @@ const ContainerS = styled(FormGroup)`
        inset 0 -3em 3em rgba(0,0,0,0.1),
              0 0  0 2px rgb(255,255,255),
              0.3em 0.3em 1em rgba(0,0,0,0.3);
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     & > div { 
         margin-top: 5%;   
     }
@@ -131,8 +60,24 @@ const ButtonStyled = styled(Button)`
 
 
 export default function Orders() {
+
+    const [medicines, setMedicines]= useState([]);
+
+    useEffect(()=>{
+        getAllMedicines();
+    },[]);
+
+    const getAllMedicines = async ()=>{
+       let response= await getMedicines();
+       setMedicines(response.data);
+    };
+
+    const  deleteMedicineDetails = async (id)=>{
+        await deleteMedicine(id);
+        getAllMedicines();
+    };
     return (
-        <React.Fragment>
+        <Fragment>
             <NavBar />
 
             <ContainerS>
@@ -153,26 +98,23 @@ export default function Orders() {
                         </StyleTableRowHead>
                     </TableHead>
                     <TableBody>
-                        {arrayMedicine.map((row) => (
-                            <TableRow key = {row.id}>
-                                <TableCell>{row.id}</TableCell>
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.category}</TableCell>
-                                <TableCell>{row.description}</TableCell>
-                                <TableCell>{row.quantity}</TableCell>
-                                <TableCell>{row.price}</TableCell>
-                                <TableCell>{row.elabDate}</TableCell>
-                                <TableCell>{row.expDate}</TableCell>
-                                <TableCell align="right"><ButtonStyled variant='contained'>Borrar</ButtonStyled><ButtonStyled variant='contained'>Editar</ButtonStyled></TableCell>
+                        {medicines.map((objectMedicine) => (
+                            <TableRow key = {objectMedicine.id}>
+                                <TableCellStyled>{objectMedicine.id}</TableCellStyled>
+                                <TableCellStyled>{objectMedicine.name}</TableCellStyled>
+                                <TableCellStyled>{objectMedicine.category}</TableCellStyled>
+                                <TableCellStyled>{objectMedicine.description}</TableCellStyled>
+                                <TableCellStyled>{objectMedicine.quantity}</TableCellStyled>
+                                <TableCellStyled>{objectMedicine.price}</TableCellStyled>
+                                <TableCellStyled>{objectMedicine.elabDate}</TableCellStyled>
+                                <TableCellStyled>{objectMedicine.expDate}</TableCellStyled>
+                                <TableCellStyled ><ButtonStyled variant='contained' onClick={()=>deleteMedicineDetails(objectMedicine.id)}>Borrar</ButtonStyled><ButtonStyled variant='contained' style= {{marginRight: 10}} component = {Link} to= {`/edit/${objectMedicine.id}`}>Editar</ButtonStyled></TableCellStyled>
                             </TableRow>
                         ))}
                     </TableBody>
                 </TableStyled>
-
-                <Link color="primary" href="#"  sx={{ mt: 3 }}>
-                    Mirar más.
-                </Link>
             </ContainerS>
-        </React.Fragment>
+            <Footer/>
+        </Fragment>
     );
 }
