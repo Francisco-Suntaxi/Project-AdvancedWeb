@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "id": 2,
-    "name": "Buprex 500 mg",
+    "name": "Buprex 400 mg",
     "description": "Medicamento para el dolor de cabeza",
     "category": "prueba",
     "quantity": 12,

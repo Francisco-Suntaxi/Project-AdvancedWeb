@@ -11,7 +11,7 @@ const medicineSchema =mongoose.Schema({
     expDate: String,
 });
 
-const collection= "medicine";
+const collection= "medicines";
 const Medicine =mongoose.model(collection, medicineSchema);
 
 export default Medicine;
