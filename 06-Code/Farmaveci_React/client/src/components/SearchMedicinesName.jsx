@@ -81,7 +81,7 @@ export default function TableMedicines() {
         showData();
     }
      
-     const results = !search ? users : users.filter((data)=> data.name.toLowerCase().includes(search.toLocaleLowerCase()))
+     const results = !search ? users : users.filter((data)=> data.name.toLowerCase().includes(search.toLocaleLowerCase()));
     
 
     return (

@@ -1,8 +1,11 @@
 import React, { Fragment} from 'react';
 import Marquee from "react-fast-marquee";
-import {  FormGroup, FormControl, Input, InputLabel, styled, Typography, Button } from '@mui/material';
+import {  FormGroup,Alert, FormControl, Input, InputLabel, styled, Typography, Button } from '@mui/material';
 import logo from '../images/img1.jpg';
 import '../css/styleLogin.css';
+import { useEffect, useState} from 'react'
+import { getUsers } from '../service/api';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -39,7 +42,41 @@ const ButtonLogIn = styled(Button)`
     height: auto;
 `;
 
+const AlertStyled = styled(Alert)`
+    margin-top: 5%;
+    border: red 2px solid;
+    background-color: #FAB6B6;
+    color: black;
+`;
+
 export default function Login() {
+    const [user, setUser]= useState([]);
+    const [userRegistred, setUserRegistred]= useState([]);
+    const navigate = useNavigate();
+    var [component, setComponent] = useState(true);
+    
+
+    function onValueChange(e){
+        setUser({...user,[e.target.name]: e.target.value});
+    }
+
+    const validateUser = () =>{
+        setUserRegistred({
+            userName: "Admin",
+            password: "admin",
+        });
+     
+            if(userRegistred.userName === user.userName && userRegistred.password === user.password){
+                navigate('all');
+            }
+            else{
+                setComponent(false);
+            }
+
+
+    };
+
+
     return (
         <Fragment>
             <Marquee speed={70} gradientColor={[]}><Typography variant="h4">FARMAVECI</Typography></Marquee>
@@ -47,18 +84,20 @@ export default function Login() {
                 <img src={logo} alt="logo"></img>
                 <FormControl>
                     <InputLabelCentered> Usuario: </InputLabelCentered>
-                    <InputCentered name="username" />
+                    <InputCentered onChange={(e)=> onValueChange(e)} name="userName" />
                 </FormControl>
                 <FormControl>
                     <InputLabelCentered> Contraseña: </InputLabelCentered>
-                    <InputCentered name="password" type='password' />
+                    <InputCentered onChange={(e)=> onValueChange(e)} name="password" type='password' />
                 </FormControl>
                 <FormControl>
                     
-                        <ButtonLogIn  onClick={() =>{ const boll = true; if(boll===true){window.location= '/all'}}} variant='contained'>
+                        <ButtonLogIn  onClick={()=>validateUser()} variant='contained'>
                            Iniciar Sesion
                         </ButtonLogIn>
+                        <AlertStyled hidden={component} severity="error">Usuario y/o Contraseña Incorrectos</AlertStyled>
                 </FormControl>
+                
             </ContainerS>
             
         </Fragment>

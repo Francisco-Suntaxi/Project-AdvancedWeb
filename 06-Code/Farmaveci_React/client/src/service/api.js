@@ -1,7 +1,8 @@
 import axios from "axios"
 const port= "3004";
 const ip= "54.210.116.27";
-const URL= "http://"+ip+":"+port+"/farmaveci";
+const localhost= "localhost";
+const URL= "http://"+localhost+":"+port+"/farmaveci";
 
 export const addNewMedicine = async(medicine) => {
 
@@ -21,6 +22,13 @@ export const getMedicines= async () => {
     }
 };
 
+export const getUsers= async () => {
+    try{
+    return await axios.get(`${URL}/users/all`);
+    }catch(error){
+        console.log("Error while calling getUsers: " + error);
+    }
+};
 
 export const getMedicine= async (id) => {
     try {

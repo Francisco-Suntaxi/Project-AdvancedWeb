@@ -37,6 +37,7 @@ const Title4 = styled(Typography)`
 
 const TableCellStyled = styled(TableCell)`
     text-align: center;
+    align-items: center;
 
 `;
 const StyleTableRowHead = styled(TableRow)`   
@@ -55,6 +56,9 @@ const TableStyled = styled(Table)`
 
 const ButtonStyled = styled(Button)`
     margin-left: 10px;
+    margin-right: 10px;
+    
+    min-width: 10%;
 
 `;
 

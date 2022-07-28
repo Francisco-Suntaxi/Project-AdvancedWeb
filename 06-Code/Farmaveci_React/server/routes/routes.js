@@ -1,6 +1,6 @@
 import express,{Router} from "express";
 import {addMedicineIncomplete,getMedicineName,getMedicineCategory,addMedicine, addMedicineBacth, getAllMedicines,getMedicine,editMedicineId,editMedicineQuantity, editMedicineName,editMedicineCategory, deleteMedicine,deleteMedicineActualDate,deleteMedicineCategory, deleteMedicineQuantity} from "../controller/medicine-controller.js";
-import { addUser,deleteUser,editUser } from "../controller/user-controller.js";
+import { addUser,deleteUser,editUser, getAllUsers } from "../controller/user-controller.js";
 
 const router= express.Router();
 //Post methods
@@ -14,6 +14,7 @@ router.get('/all',getAllMedicines); //Bussines Uri
 router.get('/:id',getMedicine);
 router.get('/name/:name',getMedicineName);
 router.get('/category/:category',getMedicineCategory);
+router.get('/users/all',getAllUsers);
 
 
 //Put methods
