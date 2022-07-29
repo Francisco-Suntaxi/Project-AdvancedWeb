@@ -1,8 +1,8 @@
 import axios from "axios"
 const port= "3004";
-const ip= "54.210.116.27";
+const ip= "34.205.140.110";
 const localhost= "localhost";
-const URL= "http://"+localhost+":"+port+"/farmaveci";
+const URL= "http://"+ip+":"+port+"/farmaveci";
 
 export const addNewMedicine = async(medicine) => {
 
