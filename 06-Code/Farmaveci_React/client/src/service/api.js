@@ -72,3 +72,21 @@ export const getInfoMedicines= async () => {
         console.log("Error while calling getAllMedicines: " + error);
     }
 };
+
+
+export const validateLogin = async (user) => {
+    try{
+        return await axios.post(`${URL}/login`,user);              
+    }catch(error){
+        console.log("Error with calling validateLogin: " + error);
+    }
+};
+
+export const validateToken = async (token) => {
+    try{
+        return await axios.post(`${URL}/Token`,token);              
+    }catch(error){
+        console.log("Error with calling validateToken: " + error);
+    }
+};
+
