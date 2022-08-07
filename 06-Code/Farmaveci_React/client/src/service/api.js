@@ -2,7 +2,7 @@ import axios from "axios"
 const port= "3004";
 const ip= "34.205.140.110";
 const localhost= "localhost";
-const URL= "http://"+ip+":"+port+"/farmaveci";
+const URL= "http://"+localhost+":"+port+"/farmaveci";
 
 export const addNewMedicine = async(medicine) => {
 
@@ -45,6 +45,16 @@ export const editMedicine= async (medicine,id) => {
         console.log("Error while calling editMedicine: " + error);
     }
 };
+
+export const editQuantity= async (id) => {
+    try {
+        //return await axios.put(`${URL}/quantity/${id}`,medicine); 
+        return await axios.put(`${URL}/quantity/${id}`);    
+    } catch (error) {
+        console.log("Error while calling editMedicine: " + error);
+    }
+};
+
 
 export const deleteMedicine = async (id)=> {
     try {
