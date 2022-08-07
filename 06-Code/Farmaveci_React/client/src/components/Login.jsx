@@ -3,9 +3,11 @@ import Marquee from "react-fast-marquee";
 import {  FormGroup,Alert, FormControl, Input, InputLabel, styled, Typography, Button } from '@mui/material';
 import logo from '../images/img1.jpg';
 import '../css/styleLogin.css';
-import { useEffect, useState} from 'react'
-import { getUsers } from '../service/api';
+import { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { validateLogin, validateToken } from '../service/api';
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
 
 
 
