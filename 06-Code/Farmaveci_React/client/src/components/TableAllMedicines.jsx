@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Typography, Button, FormGroup, styled } from '@mui/material';
-import { getMedicines, deleteMedicine} from '../service/api';
+import { getMedicines, deleteMedicine, editQuantity} from '../service/api';
 import { useState, useEffect, Fragment} from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
@@ -80,6 +80,11 @@ export default function Orders() {
         await deleteMedicine(id);
         getAllMedicines();
     };
+
+    const  modifyQuantity  = async (id)=>{
+        await editQuantity(id);
+        getAllMedicines();
+    };
     return (
         <Fragment>
             <NavBar />
@@ -112,7 +117,11 @@ export default function Orders() {
                                 <TableCellStyled>{objectMedicine.price}</TableCellStyled>
                                 <TableCellStyled>{objectMedicine.elabDate}</TableCellStyled>
                                 <TableCellStyled>{objectMedicine.expDate}</TableCellStyled>
-                                <TableCellStyled ><ButtonStyled variant='contained' onClick={()=>deleteMedicineDetails(objectMedicine.id)}>Borrar</ButtonStyled><ButtonStyled variant='contained' style= {{marginRight: 10}} component = {Link} to= {`/edit/${objectMedicine.id}`}>Editar</ButtonStyled></TableCellStyled>
+                                <TableCellStyled >
+                                    <ButtonStyled variant='contained' onClick={()=>deleteMedicineDetails(objectMedicine.id)}>Borrar</ButtonStyled>
+                                    <ButtonStyled variant='contained' style= {{marginRight: 10}} component = {Link} to= {`/edit/${objectMedicine.id}`}>Editar</ButtonStyled>
+                                    <ButtonStyled variant='contained' onClick={()=>modifyQuantity(objectMedicine.id)}>Quitar unidad</ButtonStyled>                                
+                                </TableCellStyled>
                             </TableRow>
                         ))}
                     </TableBody>

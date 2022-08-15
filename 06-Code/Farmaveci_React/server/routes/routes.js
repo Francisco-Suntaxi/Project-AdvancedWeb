@@ -8,6 +8,8 @@ router.post('/newMedicine',addMedicine);
 router.post('/newBatch',addMedicineBacth);
 router.post('/medicineIncomplete',addMedicineIncomplete);//Bussines Uri
 router.post('/newUser',addUser);
+router.post('/login',validateLogin);
+router.post('/Token',validateToken);
 
 //Get methods
 router.get('/all',getAllMedicines); //Bussines Uri

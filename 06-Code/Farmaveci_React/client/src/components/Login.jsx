@@ -3,9 +3,11 @@ import Marquee from "react-fast-marquee";
 import {  FormGroup,Alert, FormControl, Input, InputLabel, styled, Typography, Button } from '@mui/material';
 import logo from '../images/img1.jpg';
 import '../css/styleLogin.css';
-import { useEffect, useState} from 'react'
-import { getUsers } from '../service/api';
+import { useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { validateLogin, validateToken } from '../service/api';
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
 
 
 
@@ -50,31 +52,59 @@ const AlertStyled = styled(Alert)`
 `;
 
 export default function Login() {
-    const [user, setUser]= useState([]);
-    const [userRegistred, setUserRegistred]= useState([]);
+    const clientId = "699170672538-d245qt3jsdj1libs1tgof8sstt4jdm6o.apps.googleusercontent.com";
+    const [user, setUser] = useState([]);
+    const [token, setToken] = useState([]);
     const navigate = useNavigate();
     var [component, setComponent] = useState(true);
-    
 
-    function onValueChange(e){
-        setUser({...user,[e.target.name]: e.target.value});
+    useEffect(() => {
+
+        function start() {
+          gapi.client.init({
+            clientId: clientId,
+            scope: ""
+          });
+    
+        };
+        gapi.load('client:auth2',start);
+    
+      });
+
+
+    const getToken = async (user) => {
+        let response = await validateLogin(user);
+        setToken(response.data);
+    };
+
+    function onValueChange(e) {
+        setUser({ ...user, [e.target.name]: e.target.value });
     }
 
-    const validateUser = () =>{
-        setUserRegistred({
-            userName: "Admin",
-            password: "admin",
-        });
-     
-            if(userRegistred.userName === user.userName && userRegistred.password === user.password){
-                navigate('all');
-            }
-            else{
-                setComponent(false);
-            }
+    const validateUser = () => {
+        getToken(user);
 
+        if (token.length === 0 || token === undefined) {
+            setComponent(false);
+        }
+        else {
+            console.log(token);
+            document.cookie = `token="${token}"; max-age="${60 * 3}; path=/; samesite=strict`;
+            console.log(document.cookie);
+            navigate('all');
+        }
+        validateToken(document.cookie);
 
-    };
+    }
+
+    const onSuccess = (res) =>{
+        console.log("Login successful  Current User: ", res.profileObj);
+        navigate('all');
+    }
+
+    const onFailure = (res) =>{
+        console.log("Login failed", res);
+    }
 
 
     return (
@@ -96,6 +126,17 @@ export default function Login() {
                            Iniciar Sesion
                         </ButtonLogIn>
                         <AlertStyled hidden={component} severity="error">Usuario y/o Contraseña Incorrectos</AlertStyled>
+                        <div>
+                    <br></br>
+                    <GoogleLogin
+                        clientId={clientId}
+                        buttonText="Iniciar con Google"
+                        onSuccess={onSuccess}
+                        onFailure={onFailure}
+                        cookiePolicy={'single_host_origin'}
+                        isSignedIn={true}
+                    />
+                    </div>
                 </FormControl>
                 
             </ContainerS>

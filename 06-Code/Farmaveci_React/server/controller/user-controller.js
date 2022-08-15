@@ -60,3 +60,41 @@ export const deleteUser = async (request, response) => {
 
 };
 
+
+export const validateLogin = async (request, response) => {
+    const {userName, password} = request.body;
+    const newUser= new User({userName, password});
+    const token = jwt.sign(newUser.toJSON(),'farmaveci', {expiresIn: '3m'});
+    try {
+
+        const users = await User.find({});
+        users.map((objectUser) => {
+        
+            if(objectUser.userName === newUser.userName && objectUser.password === newUser.password)
+            {
+                response.status(200).json({token});  
+            }
+            else{
+                response.status(200).json();  
+            }
+        })
+
+        
+    } catch (error) {
+        response.status(404).json({message: error.message});
+    }
+
+};
+
+export const validateToken = async (request, response) => {
+    const tokenUsed = request.body;
+    const token = jwt.verify(tokenUsed,'farmaveci', 
+    (err, user) => {
+        if(err) {
+            response.status(403).json({message: "No authorized"});
+        } else{
+            response.status(200).json({message: "authorized"}, user);
+        }
+    })
+   
+};

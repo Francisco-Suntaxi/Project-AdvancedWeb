@@ -1,6 +1,6 @@
 import axios from "axios"
 const port= "3004";
-const ip= "54.210.116.27";
+const ip= "34.205.140.110";
 const localhost= "localhost";
 const URL= "http://"+localhost+":"+port+"/farmaveci";
 
@@ -46,6 +46,16 @@ export const editMedicine= async (medicine,id) => {
     }
 };
 
+export const editQuantity= async (id) => {
+    try {
+        //return await axios.put(`${URL}/quantity/${id}`,medicine); 
+        return await axios.put(`${URL}/quantity/${id}`);    
+    } catch (error) {
+        console.log("Error while calling editMedicine: " + error);
+    }
+};
+
+
 export const deleteMedicine = async (id)=> {
     try {
         return await axios.delete(`${URL}/${id}`);
@@ -71,3 +81,21 @@ export const getInfoMedicines= async () => {
         console.log("Error while calling getAllMedicines: " + error);
     }
 };
+
+
+export const validateLogin = async (user) => {
+    try{
+        return await axios.post(`${URL}/login`,user);              
+    }catch(error){
+        console.log("Error with calling validateLogin: " + error);
+    }
+};
+
+export const validateToken = async (token) => {
+    try{
+        return await axios.post(`${URL}/Token`,token);              
+    }catch(error){
+        console.log("Error with calling validateToken: " + error);
+    }
+};
+
