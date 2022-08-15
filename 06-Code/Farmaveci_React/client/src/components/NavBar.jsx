@@ -3,7 +3,7 @@ import { AppBar, Toolbar, styled } from '@mui/material'
 import { NavLink } from 'react-router-dom';
 import { GoogleLogout } from 'react-google-login';
 import { useNavigate } from 'react-router-dom';
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Header = styled(AppBar)`background: #111111`;
 const Tabs = styled(NavLink)`
@@ -31,12 +31,12 @@ function NavBar() {
                 <GoogleLogout
                     clientId={clientId}
                     render={renderProps => (
-                        <Tabs to ="/"   onClick={renderProps.onClick}>Salir</Tabs>
+                        <Tabs to ="/"   onClick={renderProps.onClick} >Salir</Tabs>
                       )}
                     buttonText="Salir"
                     onLogoutSuccess={onSuccess}
                 />
-                <Tabs to="/all">Tabla de Medicinas</Tabs>
+                <Tabs to="/all" >Tabla de Medicinas</Tabs>
                 <Tabs to="/add">Añadir Medicina</Tabs>
                 <Tabs to="/findC">Buscar Medicina</Tabs>
             </Toolbar>

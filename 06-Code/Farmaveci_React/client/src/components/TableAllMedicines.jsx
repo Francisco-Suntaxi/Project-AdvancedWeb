@@ -5,17 +5,20 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Typography, Button, FormGroup, styled } from '@mui/material';
-import { getMedicines, deleteMedicine, editQuantity} from '../service/api';
-import { useState, useEffect, Fragment} from 'react';
+import { Typography, Button, FormGroup, styled, Grid } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import { getMedicines, deleteMedicine, editQuantity } from '../service/api';
+import { useState, useEffect, Fragment } from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 
 
 
 const ContainerS = styled(FormGroup)`
-    width: 75%;
-    display: grid;
+    width: 85%;
+    display: block;
     justify-content: center;
 
     margin: 5% auto 0 auto;
@@ -65,23 +68,23 @@ const ButtonStyled = styled(Button)`
 
 export default function Orders() {
 
-    const [medicines, setMedicines]= useState([]);
+    const [medicines, setMedicines] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         getAllMedicines();
-    },[]);
+    }, []);
 
-    const getAllMedicines = async ()=>{
-       let response= await getMedicines();
-       setMedicines(response.data);
+    const getAllMedicines = async () => {
+        let response = await getMedicines();
+        setMedicines(response.data);
     };
 
-    const  deleteMedicineDetails = async (id)=>{
+    const deleteMedicineDetails = async (id) => {
         await deleteMedicine(id);
         getAllMedicines();
     };
 
-    const  modifyQuantity  = async (id)=>{
+    const modifyQuantity = async (id) => {
         await editQuantity(id);
         getAllMedicines();
     };
@@ -89,45 +92,53 @@ export default function Orders() {
         <Fragment>
             <NavBar />
 
-            <ContainerS>
-                <Title4 variant="h4">Medicamentos Registrados</Title4>
-                
-                <TableStyled size="small">
-                    <TableHead>
-                        <StyleTableRowHead>
-                            <TableCellStyled>ID</TableCellStyled>
-                            <TableCellStyled>Nombre</TableCellStyled>
-                            <TableCellStyled>Categoría</TableCellStyled>
-                            <TableCellStyled>Descripción</TableCellStyled>
-                            <TableCellStyled>Cantidad</TableCellStyled>
-                            <TableCellStyled>Precio</TableCellStyled>
-                            <TableCellStyled>Fecha Elab.</TableCellStyled>
-                            <TableCellStyled>Fecha Expir.</TableCellStyled>
-                            <TableCellStyled align="right">Acciones</TableCellStyled>
-                        </StyleTableRowHead>
-                    </TableHead>
-                    <TableBody>
-                        {medicines.map((objectMedicine) => (
-                            <TableRow key = {objectMedicine.id}>
-                                <TableCellStyled>{objectMedicine.id}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.name}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.category}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.description}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.quantity}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.price}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.elabDate}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.expDate}</TableCellStyled>
-                                <TableCellStyled >
-                                    <ButtonStyled variant='contained' onClick={()=>deleteMedicineDetails(objectMedicine.id)}>Borrar</ButtonStyled>
-                                    <ButtonStyled variant='contained' style= {{marginRight: 10}} component = {Link} to= {`/edit/${objectMedicine.id}`}>Editar</ButtonStyled>
-                                    <ButtonStyled variant='contained' onClick={()=>modifyQuantity(objectMedicine.id)}>Quitar unidad</ButtonStyled>                                
-                                </TableCellStyled>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </TableStyled>
-            </ContainerS>
-            <Footer/>
+            <Grid container>
+                <ContainerS>
+                    <Title4 variant="h4">Medicamentos Registrados</Title4>
+                    
+                    <TableStyled>
+
+                        <TableHead>
+                            <StyleTableRowHead>
+                                <TableCellStyled>ID</TableCellStyled>
+                                <TableCellStyled>Nombre</TableCellStyled>
+                                <TableCellStyled>Categoría</TableCellStyled>
+                                <TableCellStyled>Descripción</TableCellStyled>
+                                <TableCellStyled>Cantidad</TableCellStyled>
+                                <TableCellStyled>Precio</TableCellStyled>
+                                <TableCellStyled>Fecha Elab.</TableCellStyled>
+                                <TableCellStyled>Fecha Expir.</TableCellStyled>
+                                <TableCellStyled align="right">Acciones</TableCellStyled>
+                            </StyleTableRowHead>
+                        </TableHead>
+
+                        <TableBody>
+                            {medicines.map((objectMedicine) => (
+                                <TableRow key={objectMedicine.id}>
+                                    <TableCellStyled>{objectMedicine.id}</TableCellStyled>
+                                    <TableCellStyled>{objectMedicine.name}</TableCellStyled>
+                                    <TableCellStyled>{objectMedicine.category}</TableCellStyled>
+                                    <TableCellStyled>{objectMedicine.description}</TableCellStyled>
+                                    <TableCellStyled>{objectMedicine.quantity}</TableCellStyled>
+                                    <TableCellStyled>{objectMedicine.price}</TableCellStyled>
+                                    <TableCellStyled>{objectMedicine.elabDate}</TableCellStyled>
+                                    <TableCellStyled>{objectMedicine.expDate}</TableCellStyled>
+                                    <TableCellStyled >
+                                        <Grid item rowSpacing={1}>
+                                            <ButtonStyled color="primary" variant='outlined' startIcon={<EditIcon/>} style={{ marginRight: 10 }} component={Link} to={`/edit/${objectMedicine.id}`}>Editar</ButtonStyled>
+                                            <ButtonStyled color="warning" variant='outlined' startIcon={<RemoveCircleIcon/>} onClick={() => modifyQuantity(objectMedicine.id)}>Quitar unidad</ButtonStyled>
+                                            <ButtonStyled color="error" variant='outlined' startIcon={<DeleteForeverIcon/>} onClick={() => deleteMedicineDetails(objectMedicine.id)}>Borrar</ButtonStyled>
+                                        </Grid>
+                                    </TableCellStyled>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </TableStyled>
+
+                </ContainerS>
+            </Grid>
+
+            <Footer />
         </Fragment>
     );
 }

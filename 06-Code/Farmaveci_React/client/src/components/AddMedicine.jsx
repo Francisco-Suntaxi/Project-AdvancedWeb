@@ -118,7 +118,7 @@ export default function FormAddM() {
 
                             </FormControl>
                             <FormControl>
-                                <ButtonStyled variant="contained" color='primary' startIcon={<SaveIcon />} onClick={() => addMedicineInformation()}>Guardar</ButtonStyled>
+                                <ButtonStyled variant="contained" color='success' startIcon={<SaveIcon />} onClick={() => addMedicineInformation()}>Guardar</ButtonStyled>
                             </FormControl>
 
                         </FormControl>
