@@ -39,6 +39,7 @@ function NavBar() {
                 <Tabs to="/all" >Tabla de Medicinas</Tabs>
                 <Tabs to="/add">Añadir Medicina</Tabs>
                 <Tabs to="/findC">Buscar Medicina</Tabs>
+                <Tabs to="/expDate">Medicinas Expiradas</Tabs>
             </Toolbar>
         </Header>
     );
