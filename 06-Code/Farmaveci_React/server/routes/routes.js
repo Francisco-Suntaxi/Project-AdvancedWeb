@@ -1,6 +1,6 @@
 import express,{Router} from "express";
 import {addMedicineIncomplete,getMedicineName,getExpMedicines,getMedicineCategory,addMedicine, addMedicineBacth, getAllMedicines,getMedicine,editMedicineId,editMedicineQuantity, editMedicineName,editMedicineCategory, deleteMedicine,deleteMedicineActualDate,deleteMedicineCategory, deleteMedicineQuantity} from "../controller/medicine-controller.js";
-import { addUser,deleteUser,editUser, getAllUsers } from "../controller/user-controller.js";
+import { addUser,deleteUser,editUser, getAllUsers,validateToken, validateLogin } from "../controller/user-controller.js";
 
 const router= express.Router();
 //Post methods

@@ -1,4 +1,5 @@
 import User from '../Schemas/userSchema.js';
+import jwt from 'jsonwebtoken';
 
 
 export const addUser = async (request, response) => {
