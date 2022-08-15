@@ -7,8 +7,8 @@ const medicineSchema =mongoose.Schema({
     category: String,
     quantity: Number,
     price: String,
-    elabDate: String,
-    expDate: String,
+    elabDate: Date,
+    expDate: Date,
 });
 
 const collection= "medicine";

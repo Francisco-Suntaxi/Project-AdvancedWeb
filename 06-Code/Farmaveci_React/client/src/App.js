@@ -2,6 +2,7 @@
 import Login from './components/Login';
 import PageInformation from './components/PageInformation';
 import TableAllMedicines from './components/TableAllMedicines';
+import TableExpMedicines from './components/TableExpMedicines';
 import EditMedicine from './components/EditMedicine';
 import AddMedicine from './components/AddMedicine';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/page" element={<PageInformation />} />
         <Route path="/all" element={<TableAllMedicines />} />
+        <Route path="/expDate" element={<TableExpMedicines />} />
         <Route path="/edit/:id" element={<EditMedicine />} />
         <Route path="/add" element={<AddMedicine />} />
         <Route path="/findC" element={<SearchMedicinesCategory />} />

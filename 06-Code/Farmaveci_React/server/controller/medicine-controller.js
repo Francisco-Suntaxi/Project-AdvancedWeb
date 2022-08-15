@@ -88,6 +88,19 @@ export const getAllMedicines = async (request, response) => {
 
 };
 
+export const getExpMedicines = async (request, response) => {
+    var today = new Date();
+    try {
+
+        const medicines = await Medicine.find({expDate:{$lte: today}})
+        
+        response.status(200).json(medicines);
+    } catch (error) {
+        response.status(404).json({ message: error.message });
+    }
+
+};
+
 export const getMedicine = async (request, response) => {
     try {
 

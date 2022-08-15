@@ -55,6 +55,15 @@ export const deleteMedicine = async (id)=> {
     }
 };
 
+export const deleteExpMedicine = async ()=> {
+    try {
+        return await axios.delete(`${URL}/actualDate`);
+    } catch (error) {
+        console.log("Error while calling deleteMedicine: " + error);
+        
+    }
+};
+
 export const getInfoMedicines= async () => {
     try{
     return await fetch(`${URL}/all`);
