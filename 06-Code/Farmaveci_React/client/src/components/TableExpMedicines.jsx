@@ -66,31 +66,34 @@ const ButtonStyled = styled(Button)`
 export default function Orders() {
 
     const [medicines, setMedicines]= useState([]);
+    const actualDate = new Date();
+    const actualMonth = actualDate.getMonth() + 1;
+    const actualYear = actualDate.getFullYear();
+    const actualDay = actualDate.getDay();
 
-    useEffect(()=>{
+    useEffect(() => {
         getAllMedicines();
-    },[]);
+    }, []);
 
-    const getAllMedicines = async ()=>{
-       let response= await getMedicines();
-       setMedicines(response.data);
+    const getAllMedicines = async () => {
+        let response = await getMedicines();
+        setMedicines(response.data);
     };
 
-    const  deleteMedicineDetails = async (id)=>{
-        await deleteMedicine(id);
+    const deleteExpMedicines = async (date) => {
+        await deleteExpMedicine(date);
         getAllMedicines();
     };
-    const  deleteExpMedicines = async ()=>{
-        let response = await deleteExpMedicine();
-        getAllMedicines();
-    };
+    const expiredThisMonth =  medicines.filter((object)=> { return (object.expDate.split("-")[1] == actualMonth && object.expDate.split("-")[2] > actualDay)});
+    const medicinesExpirated =  medicines.filter((object)=> {return (object.expDate.split("-")[0] <= actualYear && object.expDate.split("-")[1] <= actualMonth && object.expDate.split("-")[2] <= actualDay)});
+
     return (
         <Fragment>
             <NavBar />
 
             <ContainerS>
-                <Title4 variant="h4">Medicamentos Caducados</Title4>
-                <ButtonStyled variant='contained' onClick={()=>deleteExpMedicines()}>Borrar Medicamentos Exp.</ButtonStyled>
+                <Title4 variant="h4">Medicamentos Proximos a Caducar</Title4>
+                
                 <TableStyled size="small">
                     <TableHead>
                         <StyleTableRowHead>
@@ -102,21 +105,53 @@ export default function Orders() {
                             <TableCellStyled>Precio</TableCellStyled>
                             <TableCellStyled>Fecha Elab.</TableCellStyled>
                             <TableCellStyled>Fecha Expir.</TableCellStyled>
-                            <TableCellStyled align="right">Acciones</TableCellStyled>
                         </StyleTableRowHead>
                     </TableHead>
                     <TableBody>
-                        {medicines.map((objectMedicine) => (
-                            <TableRow key = {objectMedicine.id}>
-                                <TableCellStyled>{objectMedicine.id}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.name}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.category}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.description}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.quantity}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.price}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.elabDate}</TableCellStyled>
-                                <TableCellStyled>{objectMedicine.expDate}</TableCellStyled>
-                                <TableCellStyled ><ButtonStyled variant='contained' onClick={()=>deleteMedicineDetails(objectMedicine.id)}>Borrar</ButtonStyled></TableCellStyled>
+                        {  expiredThisMonth.map((medicine) => (
+                            <TableRow key={medicine.id}>
+                                <TableCellStyled>{medicine.id}</TableCellStyled>
+                                <TableCellStyled>{medicine.name}</TableCellStyled>
+                                <TableCellStyled>{medicine.category}</TableCellStyled>
+                                <TableCellStyled>{medicine.description}</TableCellStyled>
+                                <TableCellStyled>{medicine.quantity}</TableCellStyled>
+                                <TableCellStyled>{medicine.price}</TableCellStyled>
+                                <TableCellStyled>{medicine.elabDate}</TableCellStyled>
+                                <TableCellStyled>{medicine.expDate}</TableCellStyled>
+    
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </TableStyled>
+            </ContainerS>
+            <ContainerS>
+                <Title4 variant="h4">Medicamentos Caducados</Title4>
+                <ButtonStyled variant='contained' onClick={() => deleteExpMedicines()}>Borrar Medicamentos Exp.</ButtonStyled>
+                <TableStyled size="small">
+                    <TableHead>
+                        <StyleTableRowHead>
+                            <TableCellStyled>ID</TableCellStyled>
+                            <TableCellStyled>Nombre</TableCellStyled>
+                            <TableCellStyled>Categoría</TableCellStyled>
+                            <TableCellStyled>Descripción</TableCellStyled>
+                            <TableCellStyled>Cantidad</TableCellStyled>
+                            <TableCellStyled>Precio</TableCellStyled>
+                            <TableCellStyled>Fecha Elab.</TableCellStyled>
+                            <TableCellStyled>Fecha Expir.</TableCellStyled>
+                        </StyleTableRowHead>
+                    </TableHead>
+                    <TableBody>
+                        {medicinesExpirated.map((medicine) => (
+                            <TableRow key={medicine.id}>
+                                <TableCellStyled>{medicine.id}</TableCellStyled>
+                                <TableCellStyled>{medicine.name}</TableCellStyled>
+                                <TableCellStyled>{medicine.category}</TableCellStyled>
+                                <TableCellStyled>{medicine.description}</TableCellStyled>
+                                <TableCellStyled>{medicine.quantity}</TableCellStyled>
+                                <TableCellStyled>{medicine.price}</TableCellStyled>
+                                <TableCellStyled>{medicine.elabDate}</TableCellStyled>
+                                <TableCellStyled>{medicine.expDate}</TableCellStyled>
+    
                             </TableRow>
                         ))}
                     </TableBody>
