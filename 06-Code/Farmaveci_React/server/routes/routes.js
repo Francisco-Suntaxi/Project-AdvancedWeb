@@ -28,7 +28,7 @@ router.put('/quantity/:id',editMedicineQuantity);// Bussines Uri
 
 //Delete methods
 router.delete('/:id',deleteMedicine);
-router.delete('/expDate/actualDate',deleteMedicineActualDate);//Bussines Uri
+router.delete('/expDate/:actualDate',deleteMedicineActualDate);//Bussines Uri
 router.delete('/category/:category',deleteMedicineCategory);
 router.delete('/user/:userName',deleteUser);
 
