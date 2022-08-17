@@ -263,10 +263,10 @@ export const deleteMedicineActualDate = async (request, response) => {
     for (let i = 0; i < dateMedicines.length; i++) {
         let oldDate = dateMedicines[i]['expDate']
         let expDate = oldDate.split('-');
-        let expDay = Number(expDate[0]);
+        let expYear = Number(expDate[0]);
         let expMonth = Number(expDate[1]);
-        let expYear = Number(expDate[2]);
-
+        let expDay = Number(expDate[2]);
+        
         if (expYear <= year && expMonth <= month && expDay <= day) {
             expMedicines[j] = dateMedicines[i]['id'];
             j = j + 1;
