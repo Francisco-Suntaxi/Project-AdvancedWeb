@@ -40,7 +40,7 @@ export const addMedicineIncomplete = async (request, response) => {
     {return b - a; 
     });
 
-    if (medicine.id === undefined) {
+    if (medicine.id === undefined || medicine.id === 0) {
         medicine.id =  medicinesIdsSort[0]+1;
     }
     if (medicine.name == '') {
